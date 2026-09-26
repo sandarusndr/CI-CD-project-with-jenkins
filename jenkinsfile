@@ -44,6 +44,15 @@ pipeline {
                 }
             }
         }
+       stage('Docker Build') {
+            steps {
+                sh '''
+                    docker build \
+                        -t python-cicd-app:${BUILD_NUMBER} \
+                        .
+                '''
+            }
+        }
     }
 
     post {
